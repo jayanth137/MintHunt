@@ -1,11 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import App from './App';
+import Leaderboard from './Pages/Leaderboard';
+import Main from './Pages/Main';
+import Products from './Pages/Products';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Main />}>
+      <Route path="/Products" element={<Products />} />
+      <Route path='/Leaderboard' element={<Leaderboard/>} />
+     
+    </Route>
+  )
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
